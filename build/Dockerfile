@@ -18,4 +18,4 @@ RUN mkdir -p /tmp/grpc-build && cd /tmp/grpc-build && git clone https://github.c
     sudo make -j 16 install && \
     cd /tmp && sudo rm -rf /tmp/grpc-build
 
-ENV PATH="${HOME}/.cargo/bin:${PATH}"
+ENV PATH="/home/circleci/.cargo/bin:${PATH}"
