@@ -17,7 +17,7 @@ jobs:
             mv /tmp/docker/* /usr/bin
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
-          cd doc-build
-          docker build -t andelf/doc-build:$TAG .
+          cd build
+          docker build -t andelf/pingcap-build:$TAG .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker push andelf/doc-build:$TAG
+          docker push andelf/pingcap-build:$TAG

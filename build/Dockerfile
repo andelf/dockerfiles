@@ -4,7 +4,8 @@ ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig LD_LIBRARY_PATH=/usr/local/lib
 
 RUN curl --tlsv1 https://sh.rustup.rs -sSf | sh -s -- --default-toolchain "nightly" -y
 
-RUN sudo apt-get install cmake autoconf libtool build-essential zlib1g-dev libbz2-dev libsnappy-dev
+RUN sudo apt-get install cmake autoconf libtool build-essential zlib1g-dev libbz2-dev libsnappy-dev jq && \
+    sudo rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /tmp/rocksdb && cd /tmp/rocksdb && \
     curl --tlsv1 -L https://github.com/facebook/rocksdb/archive/v5.6.1.tar.gz -o rocksdb.tar.gz && \
