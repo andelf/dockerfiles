@@ -8,4 +8,5 @@ RUN mkdir -p /tmp/prepare && \
     sudo apt-get -y install ttf-wqy-microhei && \
     sudo pip3 install qiniu && \
     sudo rm -rf /tmp/prepare && \
-    sudo rm -rf /var/lib/apt/lists/*
+    sudo rm -rf /var/lib/apt/lists/* && \
+    sudo bash -c 'echo "119.188.128.5 uc.qbox.me" >> /etc/hosts'
