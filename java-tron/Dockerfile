@@ -1,7 +1,5 @@
 FROM andelf/tron-build:latest AS builder
 
-LABEL maintainer="andelf@gmail.com"
-
 ARG BRANCH
 ENV BRANCH ${BRANCH:-develop}
 
@@ -16,15 +14,17 @@ RUN echo building ${BRANCH} ... && \
 
 FROM openjdk:8-slim
 
+LABEL maintainer="andelf@gmail.com"
+
 WORKDIR /node
-
-COPY --from=builder /build/java-tron/build/libs/FullNode.jar ./libexec/
-
-COPY --from=builder /build/java-tron/VERSION ./
 
 COPY bin ./bin
 
 COPY conf ./conf
+
+COPY --from=builder /build/java-tron/build/libs/FullNode.jar ./libexec/
+
+COPY --from=builder /build/java-tron/VERSION ./
 
 EXPOSE 18888/udp 18888 50051 8090
 
