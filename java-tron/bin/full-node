@@ -1,0 +1,12 @@
+#!/bin/sh
+
+DEPLOY_DIR=/node
+
+cd ${DEPLOY_DIR} && exec java -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -Xloggc:${DEPLOY_DIR}/log/gc.log \
+     -XX:+PrintGCDateStamps -XX:+CMSParallelRemarkEnabled -XX:ReservedCodeCacheSize=256m \
+     -XX:+CMSScavengeBeforeRemark \
+     -jar "${DEPLOY_DIR}/libexec/FullNode.jar" \
+     -p 2222222222222222222222222222222222222222222222222222222222222222 --witness \
+     -d "${DEPLOY_DIR}/data" \
+     -c "${DEPLOY_DIR}/conf/config.conf" \
+     --log-config "${DEPLOY_DIR}/conf/logback.xml"

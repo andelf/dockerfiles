@@ -1,0 +1,10 @@
+#!/bin/sh
+
+DEPLOY_DIR=/node
+
+JAR="${DEPLOY_DIR}/libexec/FullNode.jar"
+
+mkdir -p ${DEPLOY_DIR}/data
+
+cd ${DEPLOY_DIR}/data && exec java -cp ${JAR} org.tron.program.DBConvert
+
